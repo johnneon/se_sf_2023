@@ -8,7 +8,7 @@ python -m venv .env
 source .env/bin/activate
 pip install -r requirements.txt
 ```
-Then you can run it with `python translator.py`.
+Then you can run it with `streamlit run app.py`, and you will be able to see app in your browser.
 
 Authors: [johnneon](https://github.com/johnneon), ..., soon.
 
