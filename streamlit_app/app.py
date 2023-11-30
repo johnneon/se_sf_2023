@@ -1,7 +1,7 @@
 import streamlit as st
 from transformers import pipeline
 
-@st.cache_data
+@st.cache_resource
 def load_model():
     # https://huggingface.co/facebook/wmt19-ru-en
     model = pipeline("translation", "facebook/wmt19-ru-en")
