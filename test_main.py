@@ -1,28 +1,15 @@
-from fastapi.testclient import TestClient
-from main import app
+from main import get_dict, translate
 
-client = TestClient(app)
+def test_dict():
+    dict = get_dict()
+    assert dict['title'] == 'Переводчик'
+    assert dict['main_text'] == 'Введите текст на русском языке'
+    assert dict['result_text'] == '**Перевод:**\n'
 
+def test_translator_hi():
+    result = translate('привет')
+    assert result[0]['translation_text'] == 'hi'
 
-def test_read_main():
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Hello World"}
-
-def test_read_translator_hi():
-    response = client.post("/translate/",
-        json={"text": "привет"}
-    )
-    text = response.json() 
-
-    assert response.status_code == 200
-    assert text == 'hi'
-
-def test_read_translator_new():
-    response = client.post("/translate/",
-        json={"text": "что нового"}
-    )
-    text = response.json() 
-
-    assert response.status_code == 200
-    assert text == 'what\'s new'
+def test_translator_new():
+    result = translate('что нового')
+    assert result[0]['translation_text'] == 'what\'s new'
