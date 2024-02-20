@@ -5,6 +5,7 @@ app = FastAPI()
 
 app.include_router(translator_routing)
 
+
 @app.get("/")
 async def root():
     """Empty method, just for test is app running"""
