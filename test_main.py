@@ -9,20 +9,18 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"message": "Hello World"}
 
+
 def test_read_translator_hi():
-    response = client.post("/translate/",
-        json={"text": "привет"}
-    )
-    text = response.json() 
+    response = client.post("/translate/", json={"text": "привет"})
+    text = response.json()
 
     assert response.status_code == 200
-    assert text == 'hi'
+    assert text == "hi"
+
 
 def test_read_translator_new():
-    response = client.post("/translate/",
-        json={"text": "что нового"}
-    )
-    text = response.json() 
+    response = client.post("/translate/", json={"text": "что нового"})
+    text = response.json()
 
     assert response.status_code == 200
-    assert text == 'what\'s new'
+    assert text == "what's new"
