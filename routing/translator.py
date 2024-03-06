@@ -1,10 +1,11 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from schemas.translator import TranslatorProps
 from services.translator import translate as translate_func
+from constants import TRANSLATE_ROUTE, TRANSLATE_ROUTE_POST
 
-router = APIRouter(prefix="/translate")
+router = APIRouter(prefix=TRANSLATE_ROUTE)
 
-@router.post("")
+@router.post(TRANSLATE_ROUTE_POST)
 async def translate(props: TranslatorProps):
     """Translation method"""
 
